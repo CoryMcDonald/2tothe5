@@ -1,0 +1,28 @@
+<html>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  <script>
+  var babiesBornPerSecond = 4.3;
+  var birthDefectPercentage = 0.03; //Information from CDC - http://www.cdc.gov/ncbddd/birthdefects/data.html
+  var today = new Date();
+  today.setHours(0,0,0,0);
+  window.setInterval(function() {
+      var babiesBornToday = Math.floor(((new Date().getTime()) - today.getTime())/1000*babiesBornPerSecond);
+      var babiesHelpNeeded = Math.floor(babiesBornToday * birthDefectPercentage);
+      $('body').html( '<div class="container">' +
+                        '<img src="https://www.firsthandfoundation.org/wp-content/themes/fhf-2015/img/fh-logo.png"/><br/><br/>' +
+                        '<p>First Hand Foundation is an organization that provides funding for individual children—both domestically and globally—who need assistance with clinical necessities (such as surgery, medication and therapy), medical equipment and travel related to care.</p>'+
+                        '<p>So many children and families have fallen through the cracks of health care systems around the world and desperately need assistance. We aim to help as many of these children as possible, but we can’t do it alone.</p>' +
+                        'Every one out of 33 babies born will have a defect. Many children will not recieve the care they need, so please help us help those who need it most.<br/><br/>'+
+                        '<center>' +
+                        '<h5>' + babiesBornToday + ' births today</h5>' +
+                        '<h5>' + babiesHelpNeeded + ' births with defects</h5>' +
+                        '<h5>Please help children in need</h5>' +
+                        '<a class="button button-primary" href="https://www.firsthandfoundation.org/donate/">Donate</a>' +
+                        '</center>' +
+                      '</div>'
+                    )
+    }, 1000/babiesBornPerSecond)
+  </script> <!-- Forgive me browser, for I have sinned -->
+  <body></body>
+</html>
